@@ -5,18 +5,21 @@ Created on Fri May 13 11:16:02 2016
 @author: joshuakaron
 """
 
-hidden = []
-for i in range(0,5):
-    hidden.append(['~']*5)
-    
-player = []
-for i in range(0,5):
-    player.append(['~']*5)
-    
+height = 10 # number of rows
+length = 10 # number of columns
+
+shipLocations = []
+for i in range(0,height):
+    shipLocations.append(['~']*length)
+
+firedMap = []
+for i in range(0,height):
+    firedMap.append(['~']*length)
+
 def print_board(board):
     for row in board:
         print(" ".join(row))
-        
+
 def print_board_hidden(board):
     for row in board:
         for col in row:
