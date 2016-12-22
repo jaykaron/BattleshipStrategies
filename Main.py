@@ -11,7 +11,7 @@ import Board
 import AI
 from random import randint
 
-#AircraftCarrier 
+#AircraftCarrier
 #ACC = Ship(5)
 
 #Battle Ship
@@ -37,7 +37,7 @@ ship_names = {'P':P, 'D':D, 'S':S}
 for ship in ships:
     Ship.place(ship)
 
-Board.print_board(Board.hidden)
+Board.print_board(Board.shipLocations)
 
 turn_count = 0
 
@@ -45,19 +45,19 @@ turn_count = 0
 cpl = open('captains_log.txt', 'w+')
 
 while Ship.game_over == False:
-    
-    # for human player
+
+    # for human firedMap
     #guess_row = int(input("Guess Row: "))
     #guess_col = int(input("Guess Col: "))
-    
-    # for AI player
+
+    # for AI firedMap
     guess = AI.fire()
     guess_row = guess[0]
     guess_col = guess[1]
-    
 
-    at_guess = Board.hidden[guess_row][guess_col]
-    
+
+    at_guess = Board.shipLocations[guess_row][guess_col]
+
     if at_guess in ship_names.keys():
         print('Hit!')
         #cpl.write('Hit!\n')
@@ -67,26 +67,26 @@ while Ship.game_over == False:
         if ship_names[at_guess].remaining == 0:
             print('You sank my ship')
             #cpl.write('You sank my ship\n')
-        Board.player[guess_row][guess_col] = '#'
-        Board.hidden[guess_row][guess_col] = 'X'
-        Board.print_board(Board.player)
+        Board.firedMap[guess_row][guess_col] = '#'
+        Board.shipLocations[guess_row][guess_col] = 'X'
+        Board.print_board(Board.firedMap)
         turn_count += 1
     elif at_guess == '~':
         print('Missed')
         #cpl.write('Missed\n')
         AI.past_shots.append(guess)
         AI.responses.update({guess:'Missed'})
-        Board.player[guess_row][guess_col] = 'X'
-        Board.hidden[guess_row][guess_col] = 'X'
-        Board.print_board(Board.player)
+        Board.firedMap[guess_row][guess_col] = 'X'
+        Board.shipLocations[guess_row][guess_col] = 'X'
+        Board.print_board(Board.firedMap)
         turn_count += 1
     elif at_guess == 'X':
         print('You already shot there')
         cpl.write('You already shot there\n')
 
-# delete the text in captains_log.txt to prepare for next game      
+# delete the text in captains_log.txt to prepare for next game
 #cpl.seek(0)
 #cpl.truncate()
-cpl.close()  
+cpl.close()
 print("You Win!!!")
 print('Shots Taken: ', turn_count)
