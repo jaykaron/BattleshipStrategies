@@ -24,8 +24,8 @@ class Ship(object):
 
         if ship_ori == 1: # Horizontal
             while ship.placed == False:
-                ship_row = randint(0, len(Board.hidden) - 1)
-                ship_col = randint(0, len(Board.hidden) - ship.length) 
+                ship_row = randint(0, Board.height - 1)
+                ship_col = randint(0, Board.length - ship.length) 
                 # check if location is free
                 for i in range(0, ship.length):
                     if Board.hidden[ship_row][ship_col + i] != '~':
