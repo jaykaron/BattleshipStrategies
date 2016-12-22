@@ -5,8 +5,8 @@ Created on Fri May 13 11:16:02 2016
 @author: joshuakaron
 """
 
-height = 10 # number of rows
-length = 10 # number of columns
+height = 5 # number of rows
+length = 5 # number of columns
 
 shipLocations = []
 for i in range(0,height):

@@ -7,6 +7,7 @@ import Board
 class Ship(object):
 
     game_over = False
+    remaining = 3
 
     def __init__(self, name, length):
         self.length = length
