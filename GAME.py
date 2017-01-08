@@ -1,5 +1,5 @@
 import BOARD
-import AIMASTER
+import AIMASTER, AICLASSIC, AICHECKERED
 from random import randint
 import matplotlib.pyplot as plt
 
@@ -12,7 +12,8 @@ board1 = BOARD.Board(10,10, [5,4,3,3,2])
 
 board1.print_ships()
 
-player1 = AIMASTER.AiMaster()
+player1 = AICLASSIC.AiClassic()
+player2 = AICHECKERED.AiCheckered()
 
 
 def play_game(board, player):
@@ -41,7 +42,7 @@ def take_average(board, player, runs, graph=False, new_board=False):
             board = BOARD.Board(10,10, [5,4,3,3,2])
         else:
             board.reset()
-        player = AIMASTER.AiMaster()
+        player = player.__class__() #Creates a new instance of the same class
 
         if graph:
             if turns not in number_of_turns:
@@ -63,5 +64,5 @@ def take_average(board, player, runs, graph=False, new_board=False):
         plt.bar(number_of_turns, number_of_occurences)
         plt.show()
 
-#play_game(board1, player1)
-take_average(board1, player1, 2, graph=False, new_board=True)
+play_game(board1, player2)
+#take_average(board1, player1, 2, graph=False, new_board=True)
