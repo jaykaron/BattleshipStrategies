@@ -11,6 +11,8 @@ import Board
 import AI
 from random import randint
 
+currentBoard = board(5,5)
+
 #AircraftCarrier
 #ACC = Ship(5)
 
