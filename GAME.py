@@ -3,11 +3,6 @@ import AIMASTER, AICLASSIC, AICHECKERED
 from random import randint
 import matplotlib.pyplot as plt
 
-#Checkered AI unable to complete T shaped layouts
-#   ~ X a X ~ X
-#   X ~ # # # #
-#   ~ X a X ~ X
-
 board1 = BOARD.Board(10,10, [5,4,3,3,2])
 
 board1.print_ships()
@@ -65,4 +60,4 @@ def take_average(board, player, runs, graph=False, new_board=False):
         plt.show()
 
 play_game(board1, player2)
-#take_average(board1, player1, 2, graph=False, new_board=True)
+#take_average(board1, player2, 10, graph=False, new_board=True)

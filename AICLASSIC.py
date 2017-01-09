@@ -1,6 +1,10 @@
 import AIMASTER as M
 
 class AiClassic(M.AiMaster):
+    """Shoots randomly until a hit. Then shoots adjaccents until a hit. Then finds the line and shoots up and down until sink or misss"""
+
+    #When sinking the dingy, it hasn't switched to checking line mode. so it continues to shoot all adjacents
+    # Possibly can skip step 2 and go to 3
 
     def __init__(self):
         M.AiMaster.__init__(self)
