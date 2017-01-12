@@ -11,16 +11,17 @@ player1 = AICLASSIC.AiClassic()
 player2 = AICHECKERED.AiCheckered()
 
 
-def play_game(board, player):
+def play_game(board, player, print_turns=True):
     while board.shipsLeft > 0:
         player.make_decision(board)
-        board.print_shots()
+        if print_turns:
+            board.print_shots()
     print("Game Over")
     turns = len(player.log)
     print("Turns: " + str(turns))
     return turns
 
-def take_average(board, player, runs, graph=False, new_board=False):
+def take_average(board, player, runs, graph=False, new_board=False, print_turns=False):
     total_turns = 0
 
     #for graph
@@ -29,7 +30,7 @@ def take_average(board, player, runs, graph=False, new_board=False):
         number_of_occurences = []
 
     for gameN in range(0, runs):
-        turns = play_game(board, player)
+        turns = play_game(board, player, print_turns)
         total_turns += turns
         if new_board:
             print("Board Layout:")
@@ -59,5 +60,5 @@ def take_average(board, player, runs, graph=False, new_board=False):
         plt.bar(number_of_turns, number_of_occurences)
         plt.show()
 
-play_game(board1, player2)
-#take_average(board1, player2, 10, graph=False, new_board=True)
+play_game(board1, player1)
+#take_average(board1, player1, 500, graph=True, new_board=True)
