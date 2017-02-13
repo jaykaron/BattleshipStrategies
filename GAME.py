@@ -60,5 +60,5 @@ def take_average(board, player, runs, graph=False, new_board=False, print_turns=
         plt.bar(number_of_turns, number_of_occurences)
         plt.show()
 
-play_game(board1, player1)
-#take_average(board1, player1, 500, graph=True, new_board=True)
+#play_game(board1, player1)
+take_average(board1, player1, 500, graph=True, new_board=True)
