@@ -116,17 +116,3 @@ class Board():
         self.shipsLeft = len(self.sizes)
         for ship in self.shipsList:
             ship.reset_remaining()
-
-    def even_unshot_tiles(self):
-        """Returns how many even checkered tiles have not been shot
-        Inputs: None, Outputs: int - how many tiles"""
-        unshot_even_tiles = 0
-        for y in range(0, self.get_height()):
-            for x in range(0, self.get_length()):
-                if self.firedMap[y][x] == "~":
-                    if (x+y)%2 == 0:
-                        unshot_even_tiles +=1
-        if unshot_even_tiles == 0:
-            self.print_ships()
-            self.print_shots()
-        return unshot_even_tiles

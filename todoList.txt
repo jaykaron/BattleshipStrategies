@@ -1,2 +1,4 @@
 ---TODO LIST---
--start
+- make subclasses for differents AIs
+- finish cleaning and commenting AIMASTER and GAME
+- make varaible naming scheme consistent

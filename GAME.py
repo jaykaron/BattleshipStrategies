@@ -1,30 +1,27 @@
 import BOARD
-import AIMASTER
+import AIMASTER, AICLASSIC, AICHECKERED
 from random import randint
 import matplotlib.pyplot as plt
-
-#Checkered AI unable to complete T shaped layouts
-#   ~ X a X ~ X
-#   X ~ # # # #
-#   ~ X a X ~ X
 
 board1 = BOARD.Board(10,10, [5,4,3,3,2])
 
 board1.print_ships()
 
-player1 = AIMASTER.AiMaster()
+player1 = AICLASSIC.AiClassic()
+player2 = AICHECKERED.AiCheckered()
 
 
-def play_game(board, player):
+def play_game(board, player, print_turns=True):
     while board.shipsLeft > 0:
         player.make_decision(board)
-        board.print_shots()
+        if print_turns:
+            board.print_shots()
     print("Game Over")
     turns = len(player.log)
     print("Turns: " + str(turns))
     return turns
 
-def take_average(board, player, runs, graph=False, new_board=False):
+def take_average(board, player, runs, graph=False, new_board=False, print_turns=False):
     total_turns = 0
 
     #for graph
@@ -33,7 +30,7 @@ def take_average(board, player, runs, graph=False, new_board=False):
         number_of_occurences = []
 
     for gameN in range(0, runs):
-        turns = play_game(board, player)
+        turns = play_game(board, player, print_turns)
         total_turns += turns
         if new_board:
             print("Board Layout:")
@@ -41,7 +38,7 @@ def take_average(board, player, runs, graph=False, new_board=False):
             board = BOARD.Board(10,10, [5,4,3,3,2])
         else:
             board.reset()
-        player = AIMASTER.AiMaster()
+        player = player.__class__() #Creates a new instance of the same class
 
         if graph:
             if turns not in number_of_turns:
@@ -64,4 +61,4 @@ def take_average(board, player, runs, graph=False, new_board=False):
         plt.show()
 
 #play_game(board1, player1)
-take_average(board1, player1, 2, graph=False, new_board=True)
+take_average(board1, player1, 500, graph=True, new_board=True)
