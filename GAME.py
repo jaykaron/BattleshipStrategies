@@ -7,8 +7,9 @@ board1 = BOARD.Board(10,10, [5,4,3,3,2])
 
 board1.print_ships()
 
-player1 = AICLASSIC.AiClassic()
-player2 = AICHECKERED.AiCheckered()
+classicP = AICLASSIC.AiClassic()
+checkeredP = AICHECKERED.AiCheckered()
+randomP = AIMASTER.AiMaster()
 
 
 def play_game(board, player, print_turns=True):
@@ -60,5 +61,5 @@ def take_average(board, player, runs, graph=False, new_board=False, print_turns=
         plt.bar(number_of_turns, number_of_occurences)
         plt.show()
 
-#play_game(board1, player1)
-take_average(board1, player1, 500, graph=True, new_board=True)
+#play_game(board1, classicP)
+take_average(board1, classicP, 500, graph=True, new_board=True)

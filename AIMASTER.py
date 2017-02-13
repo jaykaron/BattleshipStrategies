@@ -10,10 +10,9 @@ class AiMaster ():
         """This should not be called, every AI sublclass should override this method with it's own.
             Simply shoots a random spot if places_to_shoot is empty"""
         print("MASTER")
-        if self.places_to_shoot != []:
-            shot_destination = self.places_to_shoot.pop()
-        else:
+        if self.places_to_shoot == []:
             shot_destination = self.add_to_places_to_shoot(self.pick_random(board), board)
+        shot_destination = self.places_to_shoot.pop()
 
         shot_report = board.shoot_spot(shot_destination)
         self.log.append([shot_destination, shot_report])
